@@ -1,0 +1,15 @@
+{
+  "java.jdt.ls.java.home": "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft\\jdk-17.0.10.7-hotspot",
+  "java.configuration.runtimes": [
+    {
+      "name": "JavaSE-17",
+      "path": "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft\\jdk-17.0.10.7-hotspot",
+      "default": true
+    }
+  ],
+  "maven.executable.path": "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\apache-maven-3.9.9\\bin\\mvn.cmd",
+  "terminal.integrated.env.windows": {
+    "JAVA_HOME": "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft\\jdk-17.0.10.7-hotspot",
+    "PATH": "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\apache-maven-3.9.9\\bin;C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft\\jdk-17.0.10.7-hotspot\\bin;${env:PATH}"
+  }
+}
