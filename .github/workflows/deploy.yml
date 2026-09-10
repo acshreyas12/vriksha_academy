@@ -27,23 +27,63 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Find frontend project
+        shell: bash
+        run: |
+          echo "Repository contents:"
+          find . -maxdepth 4 -type f \( -name "package.json" -o -name "vite.config.js" -o -name "vite.config.ts" \) -print
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
 
-      - name: Install frontend dependencies
-        working-directory: ./Project1/frontend
-        run: npm install
+      - name: Install dependencies
+        shell: bash
+        run: |
+          if [ -f "./Project1/frontend/package.json" ]; then
+            cd ./Project1/frontend
+          elif [ -f "./Project1/package.json" ]; then
+            cd ./Project1
+          elif [ -f "./frontend/package.json" ]; then
+            cd ./frontend
+          elif [ -f "./package.json" ]; then
+            cd .
+          else
+            echo "ERROR: Could not find package.json"
+            exit 1
+          fi
+
+          npm install
 
       - name: Build frontend
-        working-directory: ./Project1/frontend
-        run: npm run build
+        shell: bash
+        run: |
+          if [ -f "./Project1/frontend/package.json" ]; then
+            cd ./Project1/frontend
+          elif [ -f "./Project1/package.json" ]; then
+            cd ./Project1
+          elif [ -f "./frontend/package.json" ]; then
+            cd ./frontend
+          elif [ -f "./package.json" ]; then
+            cd .
+          else
+            echo "ERROR: Could not find package.json"
+            exit 1
+          fi
+
+          npm run build
+
+      - name: Find build output
+        shell: bash
+        run: |
+          echo "Searching for dist folder..."
+          find . -maxdepth 5 -type f -name "index.html" -print
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
-      - name: Upload frontend build
+      - name: Upload website
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./Project1/frontend/dist
