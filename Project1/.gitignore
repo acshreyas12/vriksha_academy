@@ -1,0 +1,16 @@
+# Dependencies
+frontend/node_modules/
+backend/target/
+
+# Build artifacts
+frontend/dist/
+
+# Local embedded database files
+backend/data/
+
+# Logs and temporary files
+*.log
+.DS_Store
+Thumbs.db
+.idea/
+

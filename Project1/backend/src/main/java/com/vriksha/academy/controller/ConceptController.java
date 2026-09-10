@@ -1,0 +1,2 @@
+package com.vriksha.academy.controller; import com.vriksha.academy.model.Concept; import com.vriksha.academy.repository.ConceptRepository; import org.springframework.web.bind.annotation.*; import java.util.*;
+@RestController @RequestMapping("/api/concepts") public class ConceptController { private final ConceptRepository repo; public ConceptController(ConceptRepository r){repo=r;} @GetMapping public List<Concept> all(){return repo.findAllByOrderByConceptNumberAsc();} }

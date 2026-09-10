@@ -1,0 +1,38 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot - VrikshaAcademyApplication",
+      "request": "launch",
+      "mainClass": "com.vriksha.academy.VrikshaAcademyApplication",
+      "projectName": "vriksha-academy-api",
+      "cwd": "${workspaceFolder}/backend"
+    },
+    {
+      "name": "Launch Frontend in Chrome",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:5173",
+      "webRoot": "${workspaceFolder}/frontend",
+      "preLaunchTask": "Run Frontend (Vite)"
+    },
+    {
+      "name": "Launch Frontend in Edge",
+      "type": "msedge",
+      "request": "launch",
+      "url": "http://localhost:5173",
+      "webRoot": "${workspaceFolder}/frontend",
+      "preLaunchTask": "Run Frontend (Vite)"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Full Stack (Spring Boot + Chrome)",
+      "configurations": [
+        "Spring Boot - VrikshaAcademyApplication",
+        "Launch Frontend in Chrome"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+package com.vriksha.academy.repository; import com.vriksha.academy.model.Concept; import org.springframework.data.jpa.repository.JpaRepository; import java.util.*; public interface ConceptRepository extends JpaRepository<Concept,Long>{ List<Concept> findAllByOrderByConceptNumberAsc(); }
