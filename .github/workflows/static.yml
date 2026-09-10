@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+
   workflow_dispatch:
 
 permissions:
@@ -24,37 +25,30 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-      # 1. Get the repository files
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2. Install Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
 
-      # 3. Install React/Vite dependencies
       - name: Install frontend dependencies
         working-directory: ./Project1/frontend
         run: npm install
 
-      # 4. Build the React website
       - name: Build frontend
         working-directory: ./Project1/frontend
         run: npm run build
 
-      # 5. Configure GitHub Pages
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
-      # 6. Upload the Vite dist folder
       - name: Upload frontend build
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./Project1/frontend/dist
 
-      # 7. Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
